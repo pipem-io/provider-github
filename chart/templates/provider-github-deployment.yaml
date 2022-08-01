@@ -15,6 +15,7 @@ spec:
     metadata:
       labels:
         component: provider-github
+        role: provider
     spec:
       containers:
         - name: provider-github
