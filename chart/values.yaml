@@ -1,0 +1,7 @@
+image: docker.pipem.io/provider-github
+version: VERSION
+
+replicas: 1
+
+log:
+  level: "info"
