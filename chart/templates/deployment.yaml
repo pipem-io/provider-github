@@ -1,24 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: provider-github
+  name: provider-{{ .Values.provider }}
   labels:
     app: pipem.io
-    component: provider-github
+    component: provider-{{ .Values.provider }}
     role: provider
 spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      component: provider-github
+      component: provider-{{ .Values.provider }}
   template:
     metadata:
       labels:
-        component: provider-github
+        app: pipem.io
+        component: provider-{{ .Values.provider }}
         role: provider
     spec:
       containers:
-        - name: provider-github
+        - name: provider-{{ .Values.provider }}
           image: {{ .Values.image }}:{{ .Values.version }}
           imagePullPolicy: IfNotPresent
           resources:
@@ -37,5 +38,3 @@ spec:
                 secretKeyRef:
                   name: pipem-secret
                   key: MONGODB_URI
-            - name: "github_TRIGGER_URL"
-              value: "https://console.cloud.github.com/cloud-build/triggers/edit/#TRIGGERID?project=#PROJECTID"
