@@ -1,11 +1,18 @@
 # Pipem.io - Provider GitHub
 
-# Install
+# Add Chart
 
-```
+```bash
 helm repo add pipem https://charts.pipem.io
 helm repo update
-
-helm install pipem/provider-github --generate-name --namespace pipem
-
 ```
+
+# Install
+
+```bash
+helm upgrade provider-github pipem/provider-github --namespace pipem -i
+```
+
+# Configuration
+
+Read more on [docs.pipem.io](https://docs.pipem.io).
